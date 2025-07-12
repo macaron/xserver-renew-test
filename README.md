@@ -4,22 +4,41 @@ XServerの無料VPSサービスの契約を自動的に延長するためのPlay
 
 ## セットアップ
 
+### Docker環境での実行
+
+```bash
+docker pull ghcr.io/macaron/xserver-renew-test:latest
+```
+
+環境変数を指定してコンテナを実行
+
+```bash
+# 環境変数を直接指定
+docker run --rm \
+  -e XSERVER_EMAIL=your-email@example.com \
+  -e XSERVER_PASSWORD=your-password \
+  ghcr.io/macaron/xserver-renew-test:latest
+
+# .envファイルを使用
+docker run --rm --env-file .env ghcr.io/macaron/xserver-renew-test:latest
+```
+
 ### ローカル環境での実行
 
-1. リポジトリをクローン
+リポジトリをクローン
 
 ```bash
 git clone git@github.com:macaron/xserver-renew-test.git
 cd xserver-renew-test
 ```
 
-1. 依存関係をインストール
+依存関係をインストール
 
 ```bash
 npm install
 ```
 
-1. 環境変数を設定
+環境変数を設定
 
 ```bash
 cp .env.example .env
@@ -32,46 +51,13 @@ XSERVER_EMAIL=your-email@example.com
 XSERVER_PASSWORD=your-password
 ```
 
-1. Playwrightブラウザをインストール
+Playwrightブラウザをインストール
 
 ```bash
 npx playwright install
 ```
 
-### Docker環境での実行
-
-1. Dockerイメージをビルド
-
-```bash
-docker build -t xserver-renew-test .
-```
-
-1. 環境変数を指定してコンテナを実行
-
-```bash
-# 環境変数を直接指定
-docker run --rm \
-  -e XSERVER_EMAIL=your-email@example.com \
-  -e XSERVER_PASSWORD=your-password \
-  xserver-renew-test
-
-# .envファイルを使用
-docker run --rm --env-file .env xserver-renew-test
-```
-
-1. テスト結果を保存したい場合（ボリュームマウント）
-
-```bash
-docker run --rm \
-  --env-file .env \
-  -v $(pwd)/test-results:/app/test-results \
-  -v $(pwd)/playwright-report:/app/playwright-report \
-  xserver-renew-test
-```
-
-## 使用方法
-
-### 基本的なテスト実行
+基本的なテスト実行
 
 ```bash
 # 全テストを実行
@@ -88,17 +74,4 @@ npm run test:debug
 
 # テストレポートを表示
 npm run test:report
-```
-
-### Docker環境でのテスト実行
-
-```bash
-# 基本実行
-docker run --rm --env-file .env xserver-auto-extend
-
-# テスト結果を保存
-docker run --rm --env-file .env \
-  -v $(pwd)/test-results:/app/test-results \
-  -v $(pwd)/playwright-report:/app/playwright-report \
-  xserver-renew-test
 ```
