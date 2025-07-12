@@ -9,7 +9,7 @@ XServerの無料VPSサービスの契約を自動的に延長するためのPlay
 1. リポジトリをクローン
 
 ```bash
-git clone 
+git clone git@github.com:macaron/xserver-renew-test.git
 cd xserver-renew-test
 ```
 
