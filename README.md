@@ -57,9 +57,7 @@ Playwrightブラウザをインストール
 npx playwright install
 ```
 
-## 使用方法
-
-### 基本的なテスト実行
+基本的なテスト実行
 
 ```bash
 # 全テストを実行
