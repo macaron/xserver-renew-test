@@ -20,10 +20,6 @@ docker run --rm \
   ghcr.io/macaron/xserver-renew-test:latest
 
 # .envファイルを使用
-docker run --rm --env-file .env xserver-renew-test
-```
-
-```bash
 docker run --rm --env-file .env ghcr.io/macaron/xserver-renew-test:latest
 ```
 
