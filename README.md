@@ -15,8 +15,6 @@ https://secure.xserver.ne.jp/xapanel/myaccount/account/loginsecurity/input
 docker pull ghcr.io/macaron/xserver-renew-test:latest
 ```
 
-1 0 * * * docker run --rm -e XSERVER_EMAIL=メール -e XSERVER_PASSWORD=パスワード ghcr.io/macaron/xserver-renew-test:latest
-
 環境変数を指定してコンテナを実行
 
 ```bash
