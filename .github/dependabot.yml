@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: "bun"
+  directory: "/"
+  ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+  schedule:
+    interval: "daily"
+    timezone: "Asia/Tokyo"
+    time: "11:00"
+  reviewers:
+    - "macaron"
+  target-branch: "main"
